@@ -111,8 +111,8 @@ public class Operator {
 
     public enum Operators {
         LIFE("38063", "38093", "38073"),
-        KYIVSTAR("38097", "38067", "38098"),
-        VODAFONE("38050", "38066", "38095");
+        VODAFONE("38050", "38066", "38095"),
+        KYIVSTAR("38097", "38067", "38098");
 
         private ArrayList<String> phoneNumbers = new ArrayList<>();
 

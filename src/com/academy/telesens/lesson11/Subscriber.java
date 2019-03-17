@@ -1,6 +1,6 @@
 package com.academy.telesens.lesson11;
 
-public class Subscriber {
+public class Subscriber implements Comparable<Subscriber> {
     private Long id;
     private String firstName;
     private String lastName;
@@ -78,6 +78,21 @@ public class Subscriber {
         this.operator = operator;
     }
 
+    //================================================================================//
+
+    // Сортировка по Id по возрастанию
+
+    @Override
+    public int compareTo(Subscriber subscriber){
+        if(this.getId() > subscriber.getId())
+            return 1;
+        if(this.getId() < subscriber.getId())
+            return -1;
+        return 0;
+    }
+
+    //================================================================================//
+
     @Override
     public String toString() {
         return "Subscriber: " +
@@ -90,6 +105,8 @@ public class Subscriber {
                 " | operator=" + operator + "\n";
     }
 }
+
+
 
 
 
