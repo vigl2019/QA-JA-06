@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>AuthDemo</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Untitled Test Case</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://automationpractice.com/index.php<datalist><option>http://automationpractice.com/index.php</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Sign in<datalist><option>link=Sign in</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Contact us'])[1]/preceding::a[1]</option><option>//a[contains(text(),'Sign in')]</option><option>//header[@id='header']/div[2]/div/div/nav/div/a</option><option>//a[@href='http://automationpractice.com/index.php?controller=my-account']</option><option>//nav/div/a</option><option>css=a.login</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[2]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Already registered?'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Forgot your password?'])[1]/preceding::input[2]</option><option>//input[@id='email']</option><option>//form[@id='login_form']/div/div/input</option><option>//div[2]/form/div/div/input</option><option>css=#email</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option><option>name=email</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[2]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Already registered?'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Forgot your password?'])[1]/preceding::input[2]</option><option>//input[@id='email']</option><option>//form[@id='login_form']/div/div/input</option><option>//div[2]/form/div/div/input</option><option>css=#email</option></datalist></td><td>some-password</td>
+</tr>
+<tr><td>click</td><td>id=passwd<datalist><option>id=passwd</option><option>name=passwd</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[2]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Forgot your password?'])[1]/preceding::input[1]</option><option>//input[@id='passwd']</option><option>//form[@id='login_form']/div/div[2]/span/input</option><option>//span/input</option><option>css=#passwd</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=passwd<datalist><option>id=passwd</option><option>name=passwd</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[2]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Forgot your password?'])[1]/preceding::input[1]</option><option>//input[@id='passwd']</option><option>//form[@id='login_form']/div/div[2]/span/input</option><option>//span/input</option><option>css=#passwd</option></datalist></td><td>some-password</td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Forgot your password?'])[1]/following::span[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Forgot your password?'])[1]/following::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::span[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Newsletter'])[1]/preceding::span[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Ok'])[1]/preceding::span[1]</option><option>//button[@id='SubmitLogin']/span</option><option>//p[2]/button/span</option><option>css=#SubmitLogin &gt; span</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentication'])[2]/following::li[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentication'])[2]/following::li[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentication'])[1]/following::li[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Create an account'])[1]/preceding::li[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[1]/preceding::li[1]</option><option>//div[@id='center_column']/div/ol/li</option><option>//ol/li</option><option>css=ol &gt; li</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentication'])[2]/following::li[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentication'])[2]/following::li[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Authentication'])[1]/following::li[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Create an account'])[1]/preceding::li[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email address'])[1]/preceding::li[1]</option><option>//div[@id='center_column']/div/ol/li</option><option>//ol/li</option><option>css=ol &gt; li</option></datalist></td><td>Invalid email address.</td>
+</tr>
+</tbody></table>
+</body>
+</html>
