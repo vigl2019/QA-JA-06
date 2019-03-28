@@ -154,20 +154,26 @@ public class AuthTests {
         try (XSSFWorkbook workbook = new XSSFWorkbook(file)) {
             XSSFSheet sheet = workbook.getSheet("AuthData");
 
-          for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-              XSSFRow row = sheet.getRow(i);
+            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+                XSSFRow row = sheet.getRow(i);
 
-              String email = row.getCell(0).getStringCellValue();
-              String password = row.getCell(1).getStringCellValue();
-              String errorMessage = row.getCell(2).getStringCellValue();
+                String email = "";
+                String password = "";
 
-              AuthData authData = new AuthData();
-              authData.setEmail(email);
-              authData.setPassword(password);
-              authData.setErrorMessage(errorMessage);
+                if (row.getCell(0) != null)
+                    email = row.getCell(0).getStringCellValue();
+                if (row.getCell(1) != null)
+                    password = row.getCell(1).getStringCellValue();
 
-              testDataList.add(authData);
-          }
+                String errorMessage = row.getCell(2).getStringCellValue();
+
+                AuthData authData = new AuthData();
+                authData.setEmail(email);
+                authData.setPassword(password);
+                authData.setErrorMessage(errorMessage);
+
+                testDataList.add(authData);
+            }
         } catch (IOException | InvalidFormatException e) {
 //            e.printStackTrace();
             System.out.println(e.getMessage());
@@ -197,11 +203,5 @@ public class AuthTests {
         return returnProperty;
     }
 }
-
-
-
-
-
-
 
 
