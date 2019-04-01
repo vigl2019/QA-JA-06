@@ -14,7 +14,10 @@
 
 package com.academy.lesson15;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +32,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class TestSorting {
 
+    private String commonProperties = "./src/main/resources/common.properties";
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
@@ -36,8 +40,21 @@ public class TestSorting {
 
     @BeforeClass(alwaysRun = true)
     public void setUp() throws Exception {
-        driver = new ChromeDriver();
+        initDrivers();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
+
+    private void initDrivers() {
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileReader(commonProperties));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.setProperty("webdriver.chrome.driver", properties.getProperty("chrome.driver"));
+        System.setProperty("webdriver.gecko.driver", properties.getProperty("gecko.driver"));
+        driver = new ChromeDriver();
+//      driver = new FirefoxDriver();
     }
 
     @Test
@@ -94,10 +111,19 @@ public class TestSorting {
             WebElement priceWebElement1 = jackets.get(i);
             WebElement priceWebElement2 = jackets.get(i + 1);
 
-            String priceString1 = priceWebElement1.getText().replaceAll(" ", "").replace("грн", "");
+            String priceString1 = priceWebElement1.getText();
+
+            priceString1 = priceString1.replace("грн", "");
+            priceString1 = priceString1.replaceAll("[\\s|\\u2009]+", "");
+            // priceString = priceString.replaceAll("\\u2009", ""); // удаление узкого пробела \u2009, HTML &thinsp;
+            // U+2009 Hex в Юникоде или десятичный код &#8201;
             Integer price1 = Integer.parseInt(priceString1);
 
-            String priceString2 = priceWebElement2.getText().replaceAll(" ", "").replace("грн", "");
+            String priceString2 = priceWebElement2.getText();
+            priceString2 = priceString2.replace("грн", "");
+            priceString2 = priceString2.replaceAll("[\\s|\\u2009]+", "");
+            // priceString = priceString.replaceAll("\\u2009", ""); // удаление узкого пробела \u2009, HTML &thinsp;
+            // U+2009 Hex в Юникоде или десятичный код &#8201;
             Integer price2 = Integer.parseInt(priceString2);
 
             if (price2 < price1)

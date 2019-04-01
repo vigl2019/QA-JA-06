@@ -15,7 +15,10 @@
 
 package com.academy.lesson15;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +32,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class TestSlaider {
 
+    private String commonProperties = "./src/main/resources/common.properties";
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
@@ -36,8 +40,21 @@ public class TestSlaider {
 
     @BeforeClass(alwaysRun = true)
     public void setUp() throws Exception {
-        driver = new ChromeDriver();
+        initDrivers();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
+
+    private void initDrivers() {
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileReader(commonProperties));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.setProperty("webdriver.chrome.driver", properties.getProperty("chrome.driver"));
+        System.setProperty("webdriver.gecko.driver", properties.getProperty("gecko.driver"));
+        driver = new ChromeDriver();
+//      driver = new FirefoxDriver();
     }
 
     @Test
@@ -106,8 +123,17 @@ public class TestSlaider {
         for (WebElement priceWebElement : priceWebElements) {
 
             String priceString = priceWebElement.getText();
+            priceString = priceString.replace("грн", "");
+            priceString = priceString.replaceAll("[\\s|\\u2009]+", "");
+            // priceString = priceString.replaceAll("\\u2009", ""); // удаление узкого пробела \u2009, HTML &thinsp;
+            // U+2009 Hex в Юникоде или десятичный код &#8201;
+            Integer price = Integer.parseInt(priceString);
+
+/*
+            String priceString = priceWebElement.getText();
             priceString = priceString.replaceAll(" ", "").replace("грн", "");
             Integer price = Integer.parseInt(priceString);
+*/
 
             if (price < 5500 || price > 25500) {
                 throw new AssertionError("Цена не соответствует заданному диапазону цен!");
@@ -188,3 +214,4 @@ public class TestSlaider {
         }
     }
 }
+
